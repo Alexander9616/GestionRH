@@ -27,6 +27,31 @@
             </div>
             <p class="texto">Estado Permisos</p>
         </div>
+
+        <div class="contenedor-general">
+           <div class="logo-interior">
+               <%--PONER ICONOS ACÁ--%>
+               <img src="Recursos/Iconos/BarraNavegacion/Consultar.png" width="40" height="40" />
+            </div>
+            <p class="texto">Consultar Horarios</p>
+        </div>
+
+        <div class="contenedor-general">
+           <div class="logo-interior">
+               <%--PONER ICONOS ACÁ--%>
+               <img src="Recursos/Iconos/BarraNavegacion/valorar.png" width="40" height="40" />
+            </div>
+            <p class="texto">Gest. Formularios</p>
+        </div>
+        
+        <div class="contenedor-general">
+           <div class="logo-interior">
+               <%--PONER ICONOS ACÁ--%>
+               <img src="Recursos/Iconos/BarraNavegacion/add.png" width="40" height="40" />
+            </div>
+            <p class="texto">Agregar Empleado</p>
+        </div>
+
         <div class="contenedor-general">
            <div class="logo-interior">
                <%--PONER ICONOS ACÁ--%>
@@ -34,13 +59,15 @@
             </div>
             <p class="texto">Editar Perfil</p>
         </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
         <div class="contenedor-general" runat="server">
            <div class="logo-interior">
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/logout.png" />
-            </div >
+            </div>
+            
             <p class="texto"><a href="Login.aspx">Cerrar Sesión</a></p>
+
         </div>
 
     </div>

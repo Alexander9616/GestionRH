@@ -25,10 +25,12 @@ div#Barra:hover
 }
 div#Contenedor
 {
-    left:230px;
+    left:220px;
     margin:auto;
     height:100%;
     position:absolute;
+    background:#F1F9FF;
+    
 }
 
 li
@@ -49,7 +51,7 @@ div#Principal
 {
     position:relative;
     left:50px;
-    background:#F1F9FF;
+    background:#ebebeb;
     width:1150px;
     height:570px;
     align-content:center;
@@ -86,4 +88,17 @@ P.texto
 div#contenedor-general-primero
 {
     margin-top:70px;
+}
+
+a:link   
+{   
+ text-decoration:none;
+ color:white;   
+ font-size:15px;
+}
+
+a:visited {
+ text-decoration:none;
+ color:white;  
+ font-size:15px;
 }
