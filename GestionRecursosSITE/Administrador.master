@@ -36,13 +36,6 @@
             <p class="texto">Consultar Horarios</p>
         </div>
 
-        <div class="contenedor-general">
-           <div class="logo-interior">
-               <%--PONER ICONOS ACÁ--%>
-               <img src="Recursos/Iconos/BarraNavegacion/valorar.png" width="40" height="40" />
-            </div>
-            <p class="texto">Gest. Formularios</p>
-        </div>
         
         <div class="contenedor-general">
            <div class="logo-interior">

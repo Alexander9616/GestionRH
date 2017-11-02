@@ -34,7 +34,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/nomina.png" width="40" height="40" />
             </div>
-            <p class="texto">Generar Nóminas</p>
+            <p class="texto"><a href="GenerarNominas.aspx">Generar Nóminas</a></p>
         </div>
         
         <div class="contenedor-general">
@@ -42,15 +42,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/Notificar.png" width="40" height="40" />
             </div>
-            <p class="texto">Notificar Solicitudes</p>
-        </div>
-
-        <div class="contenedor-general">
-           <div class="logo-interior">
-               <%--PONER ICONOS ACÁ--%>
-               <img src="Recursos/Iconos/BarraNavegacion/check.png" width="40" height="40" />
-            </div>
-            <p class="texto">Valorar Empleados</p>
+            <p class="texto"><a href="Permisos.aspx">Notificar Solicitudes</a></p>
         </div>
 
         <div class="contenedor-general">

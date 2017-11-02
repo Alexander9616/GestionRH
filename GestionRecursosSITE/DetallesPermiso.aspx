@@ -5,15 +5,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="formDetallesSolicitud" runat="server">
          <br /> &nbsp;<asp:LinkButton runat="server" ID="btnVolver" ForeColor="Blue">Volver</asp:LinkButton>
-        <center><asp:Label runat="server" ForeColor="LightBlue" Font-Bold="true" Font-Size="XX-Large">Solicitudes de Permiso</asp:Label></center><hr /><br />
+        <center><asp:Label runat="server" Font-Bold="True" Font-Size="XX-Large" CssClass="Texto">Solicitudes de Permiso</asp:Label></center><hr /><br />
         <div align="center">
            <table width="80%" border="5px">
                <tr>
                    <th>
-                       <asp:Label runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Larger"> Detalles</asp:Label>
+                       <asp:Label runat="server" Font-Bold="True" Font-Size="Larger"> Detalles</asp:Label>
                    </th>
                    <th>
-                       <asp:Label runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium">Estado: </asp:Label>&nbsp;
+                       <asp:Label runat="server" Font-Bold="True" Font-Size="Medium">Estado: </asp:Label>&nbsp;
                        <asp:Label runat="server" ID="lblEstado" Text="[Aqui se mostrara el estado]"></asp:Label>
                    </th>
                </tr>
@@ -81,7 +81,7 @@
                 <asp:ListItem Value="0">Aprobar</asp:ListItem>
             </asp:DropDownList>
             <br />
-            <asp:Button  runat="server" ID="btnProcesar" Text="Procesar"/>
+            <asp:Button  runat="server" ID="btnProcesar" Text="Procesar" CssClass="boton"/>
             <br />
             <asp:Label runat="server" ID="lblResultado" ForeColor="Red">Aqui Se mostrara el resultado</asp:Label>
         </div>

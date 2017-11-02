@@ -57,7 +57,10 @@ th,td
 {
 	border-bottom: 1px solid #2699FB;
 }
-
+td
+{
+    font-weight:bold;
+}
 /*Selección General*/
 ::selection 
 { 
@@ -76,7 +79,18 @@ th,td
 	color:white; 
 }
 
-
+.link
+{
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:25px;
+    background:white;
+    margin-top:55px;
+}
+.link:hover
+{
+    font-size:20px;
+}
 
 /*Para ponerlo en el General*/
 .Texto
