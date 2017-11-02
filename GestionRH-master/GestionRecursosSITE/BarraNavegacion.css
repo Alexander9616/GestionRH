@@ -1,0 +1,104 @@
+﻿*{
+	margin: 0px;
+	padding: 0px;
+	font-family:'Segoe UI';
+    font-size:20px;
+}
+
+div#Barra
+{
+    position:absolute;
+    width:65px;
+    height: 100%;
+    background-color:#2699FB;
+    color:white;
+    top: 6px;
+    left: 0px;
+    overflow:hidden;
+    -webkit-transition: width 0.5s;
+    -o-transition: width 0.5s;
+}
+div#Barra:hover
+{
+    width:228px;
+    
+}
+div#Contenedor
+{
+    left:220px;
+    margin:auto;
+    height:100%;
+    position:absolute;
+    background:#F1F9FF;
+    
+}
+
+li
+{
+    line-height:55px;
+}
+
+li:hover
+{
+    position:absolute;
+    left:5px;
+}
+#Titulo
+{
+    text-align:center;
+}
+div#Principal
+{
+    position:relative;
+    left:50px;
+    background:#ebebeb;
+    width:1150px;
+    height:570px;
+    align-content:center;
+}
+
+div#UsuarioYFoto
+{
+    width:40px;
+    height:40px;
+    margin:10px;
+    background-color:white;
+}
+
+div.contenedor-general
+{
+    width:195px;
+    height: 40px;
+    margin-left:10px;
+    margin-top:20px;
+}
+
+div.logo-interior
+{
+    width:40px;
+    height:40px;
+    float:left;
+}
+P.texto
+{
+    margin-left:60px;
+    line-height:40px;
+    font-size:15px;
+}
+div#contenedor-general-primero
+{
+    margin-top:70px;
+}
+
+a:link   
+{   
+ text-decoration:none;
+ color:white;   
+ font-size:15px;
+}
+
+a:visited {
+ text-decoration:none;
+ color:white;  
+ font-size:15px;
+}
