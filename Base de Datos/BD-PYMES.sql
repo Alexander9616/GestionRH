@@ -76,7 +76,6 @@ create table Empleados
 	clave nvarchar(20) not null,
 	direccion nvarchar (150) not null,
 	salario money not null,
-	idHorario int foreign key references Horarios(idHorario),
 	idEstado int foreign key references EstadoEmpleados(idEstado)
 );
 go
@@ -168,3 +167,5 @@ on Empleados.idEmpleado=Empleados_Horarios.idEmpleado inner join Horarios
 on Empleados_Horarios.idHorario=Horarios.idHorario inner join Dias_Horarios
 on Horarios.idHorario= Dias_Horarios.idHorario inner join DiasLaborales
 on DiasLaborales.idDia=Dias_Horarios.idDia
+
+select count(idEmpleado) from Empleados where idEmpleado='Empleado1' and clave='1234';

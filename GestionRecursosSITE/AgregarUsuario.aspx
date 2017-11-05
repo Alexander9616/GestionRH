@@ -15,7 +15,7 @@
     <br />
     <asp:label ID="lblApellido" runat="server" Text="Apellido"></asp:label>
         <br />
-    <asp:Textbox ID="txtApellido" runat="server" Width="383px" OnTextChanged="txtApellido_TextChanged"></asp:Textbox>
+    <asp:Textbox ID="txtApellido" runat="server" Width="383px"></asp:Textbox>
     <br />
     <asp:label ID="lblCargo" runat="server" Text="Cargo:"></asp:label>
         <br />

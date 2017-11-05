@@ -19,7 +19,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/User.png" width="40" height="40" />
             </div>
-            <p class="texto">Nombre de Usuario</p>
+            <p class="texto">Nombre de usuario</p>
         </div>
         <div id="contenedor-general-primero" class="contenedor-general">
            <div class="logo-interior">

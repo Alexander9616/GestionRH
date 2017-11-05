@@ -11,4 +11,31 @@ public partial class Login : System.Web.UI.Page
     {
 
     }
+
+    protected void btnEntrar_Click(object sender, EventArgs e)
+    {
+        string usuario = txtUsuario.Text;
+        string password = txtPassword.Text;
+        if(LoginM.autenticar(usuario,password)==true)
+        {
+            Session["User"] = usuario;
+            switch (LoginM.tipoUser(usuario))
+            {
+                case 1:
+                     Response.Redirect("Prueba.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("PruebaAdmin.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("PruebaGerente.aspx");
+                    break;
+            }
+           
+        }
+        else
+        {
+            Response.Write("<script>alert('Usuario o Contraseña no son validos!');</script>");
+        }
+    }
 }

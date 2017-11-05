@@ -10,25 +10,28 @@
 </head>
 <body>
     <center>
-        <div class="logopyme">
+          <div class="logopyme">
             Logo de PYME
         </div>
     </center>
-    
+     
     <div class="login">
+
+        <form id="form1" runat="server">
     <div class="login-triangle"></div>
   
     <h2 class="login-header">Iniciar Sesión</h2>
 
-        <form id="form1" runat="server">
             <p>
-                <b style="color:#2699FB">Usuario</b>
+                <b style="color:#2699FB">Usuario</b> &nbsp;
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="* Valor requerido" ControlToValidate="txtUsuario" ForeColor="Red"></asp:RequiredFieldValidator>
             <asp:TextBox ID="txtUsuario" runat="server" CssClass="textbox"></asp:TextBox>
                 <br />
-            <b style="color:#2699FB">Contraseña</b>
-            <asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" TextMode="Password"></asp:TextBox>
+            <b style="color:#2699FB">Contraseña</b>&nbsp;
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="* Valor requerido" ControlToValidate="txtPassword" ForeColor="Red"></asp:RequiredFieldValidator>
+&nbsp;<asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" TextMode="Password"></asp:TextBox>
                 <br />
-            <asp:Button ID="btnEntrar" runat="server" CssClass="boton" Text="ENTRAR" />
+            <asp:Button ID="btnEntrar" runat="server" CssClass="boton" Text="ENTRAR" OnClick="btnEntrar_Click" />
             </p>
         </form>
     </div>
