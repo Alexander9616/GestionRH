@@ -12,7 +12,8 @@
     <link href="Formularios.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div id="Barra">
+    <form name="form" runat="server">
+        <div id="Barra">
                 <!--DIV DE NAVEGACIÓN PRINCIPAL PARA USUARIO TIPO: EMPLEADO-->
         <div class="contenedor-general">
            <div class="logo-interior">
@@ -50,7 +51,9 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/Editar.png" />
             </div>
-            <p class="texto">Editar Perfil</p>
+            <p class="texto">
+                <asp:LinkButton ID="lbEditarPerfilAdmin" runat="server" PostBackUrl="~/EditarPerfilAdmin.aspx">Editar Perfil</asp:LinkButton>
+            </p>
         </div>
         <br /><br /><br /><br /><br /><br /><br />
         <div class="contenedor-general" runat="server">
@@ -64,6 +67,8 @@
         </div>
 
     </div>
+    
+    
     <div id="Contenedor">
         <h3 id="Titulo"><i>Logo de PYME</i></h3>
         <div id="Principal" class="Texto">
@@ -73,5 +78,6 @@
             
         </div>
     </div>
+    </form>
 </body>
 </html>

@@ -76,13 +76,14 @@ create table Empleados
 	clave nvarchar(20) not null,
 	direccion nvarchar (150) not null,
 	salario money not null,
-	idEstado int foreign key references EstadoEmpleados(idEstado)
+	idEstado int foreign key references EstadoEmpleados(idEstado),
+    telefono nchar(20) not null
 );
 go
-insert into Empleados (idEmpleado,nombres,apellidos,dui,nit,clave,direccion,salario,idEstado) values
-('Empleado1', 'Oscar', 'Duran', '00000000-0', '00000000-0', '1234','dsdsdsdsd',450.00,1),
-('Administrador1', 'Rene', 'Hernandez', '00000000-0', '00000000-0', '1234', 'dsdsdsd',450.00,1),
-('Gerente1', 'Ismael', 'Cortez', '00000000-0', '00000000-0', '1234','dsadsadsadsad',450.00,1);
+insert into Empleados (idEmpleado,nombres,apellidos,dui,nit,clave,direccion,salario,idEstado,telefono) values
+('Empleado1', 'Oscar', 'Duran', '00000000-0', '00000000-0', '1234','dsdsdsdsd',450.00,1,'2289-9635'),
+('Administrador1', 'Rene', 'Hernandez', '00000000-0', '00000000-0', '1234', 'dsdsdsd',450.00,1,'2289-9635'),
+('Gerente1', 'Ismael', 'Cortez', '00000000-0', '00000000-0', '1234','dsadsadsadsad',450.00,1,'2289-9635');
 go
 create table EmpleadosCargo
 (
@@ -169,3 +170,29 @@ on Horarios.idHorario= Dias_Horarios.idHorario inner join DiasLaborales
 on DiasLaborales.idDia=Dias_Horarios.idDia
 
 select count(idEmpleado) from Empleados where idEmpleado='Empleado1' and clave='1234';
+
+--PROCEDIMIENTOS ALMACENADOS PARA CREAR PERFIL
+--Actualizar Datos
+go
+create procedure spActualizarDatos
+@direccion nvarchar(150),
+@telefono nchar(20),
+@id char(20)
+as
+begin
+	update Empleados
+	set direccion = @direccion,telefono=@telefono
+	where idEmpleado=@id
+end
+
+--Actualizar Contraseña
+go
+create procedure spCambiarClave
+@pass nvarchar(50),
+@id char(20)
+as
+begin
+	update Empleados
+	set clave = @pass
+	where idEmpleado = @id
+end

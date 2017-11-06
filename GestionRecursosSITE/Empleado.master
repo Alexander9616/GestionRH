@@ -12,6 +12,7 @@
     <link href="Formularios.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <form id="form1" runat="server">
     <div id="Barra">
                 <!--DIV DE NAVEGACIÓN PRINCIPAL PARA USUARIO TIPO: EMPLEADO-->
         <div class="contenedor-general">
@@ -32,7 +33,9 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/Editar.png" />
             </div>
-            <p class="texto">Editar Perfil</p>
+            <p class="texto">
+                <asp:LinkButton ID="lbEditarPerfilEmpleado" runat="server" PostBackUrl="~/EditarPerfilEmpleado.aspx">EditarPerfil</asp:LinkButton>
+            </p>
         </div>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <div class="contenedor-general" runat="server">
@@ -53,5 +56,6 @@
             
         </div>
     </div>
+    </form>
 </body>
 </html>

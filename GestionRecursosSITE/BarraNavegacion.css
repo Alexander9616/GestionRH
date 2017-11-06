@@ -8,7 +8,6 @@
 div#Barra
 {
     position:absolute;
-    width:65px;
     height: 100%;
     background-color:#2699FB;
     color:white;
@@ -30,7 +29,6 @@ div#Contenedor
     height:100%;
     position:absolute;
     background:#F1F9FF;
-    
 }
 
 li
@@ -51,7 +49,7 @@ div#Principal
 {
     position:relative;
     left:50px;
-    background:#ebebeb;
+    background:#F1F9FF;
     width:1150px;
     height:570px;
     align-content:center;
