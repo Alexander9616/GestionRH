@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form id="formPermisos" runat="server">
+    
         <br /><center><asp:Label runat="server" ForeColor="LightBlue" Font-Bold="true" Font-Size="XX-Large">Solicitudes de Permiso</asp:Label></center><hr /><br />
         <div align="center">  
             <table align="center" width="60%">
@@ -38,6 +38,5 @@
 
             </asp:GridView>
         </div>
-    </form>
 </asp:Content>
 

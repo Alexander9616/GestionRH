@@ -16,26 +16,38 @@ public partial class Login : System.Web.UI.Page
     {
         string usuario = txtUsuario.Text;
         string password = txtPassword.Text;
-        if(LoginM.autenticar(usuario,password)==true)
+        if(conexion.conectar())
         {
-            Session["User"] = usuario;
-            switch (LoginM.tipoUser(usuario))
+            conexion.cerrar();
+            if (LoginM.autenticar(usuario, password) == true)
             {
-                case 1:
-                     Response.Redirect("Prueba.aspx");
-                    break;
-                case 2:
-                    Response.Redirect("PruebaAdmin.aspx");
-                    break;
-                case 3:
-                    Response.Redirect("PruebaGerente.aspx");
-                    break;
+                Session["TUsuario"]= LoginM.tipoUser(usuario);
+                Session["User"] = usuario;
+                switch (LoginM.tipoUser(usuario))
+                {
+                  
+                    case 1:
+                        Response.Redirect("Prueba.aspx");
+                        break;
+                    case 2:
+                        Response.Redirect("PruebaAdmin.aspx");
+                        break;
+                    case 3:
+                        Response.Redirect("PruebaGerente.aspx");
+                        break;
+                }
+
             }
-           
+            else
+            {
+                Response.Write("<script>alert('Usuario o Contraseña no son validos!');</script>");
+            }
         }
         else
         {
-            Response.Write("<script>alert('Usuario o Contraseña no son validos!');</script>");
+            Response.Write("<script>alert('No se puede conectar, intente más tarde!.');</script>");
         }
+
+
     }
 }

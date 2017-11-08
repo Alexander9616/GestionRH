@@ -1,26 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GestionRecursosSITE", ".", "{010D29A3-C14F-4790-9544-3DAC7112A264}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GestionRecursosSITE", ".", "{FCE73495-E53C-46D0-8CF7-01AA2BFD641A}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50882"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Downloads\GestionRH-master\GestionRecursosSITE\"
+		Debug.AspNetCompiler.PhysicalPath = "..\GestionRecursosSITE\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50882\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_50882"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Downloads\GestionRH-master\GestionRecursosSITE\"
+		Release.AspNetCompiler.PhysicalPath = "..\GestionRecursosSITE\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50882\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "50882"
+		SlnRelativePath = "..\GestionRecursosSITE\"
 	EndProjectSection
 EndProject
 Global
@@ -28,8 +29,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{010D29A3-C14F-4790-9544-3DAC7112A264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{010D29A3-C14F-4790-9544-3DAC7112A264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE73495-E53C-46D0-8CF7-01AA2BFD641A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE73495-E53C-46D0-8CF7-01AA2BFD641A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

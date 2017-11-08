@@ -61,7 +61,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/logout.png" />
             </div >
-            <p class="texto"><a href="Login.aspx">Cerrar Sesión</a></p>
+            <p class="texto"><asp:LinkButton ID="lbCerrarSesion" runat="server" PostBackUrl="~/Login.aspx" OnClick="lbCerrarSesion_Click1">Cerrar Sesión</asp:LinkButton></p>
             <%--<p>Cerrar Sesión</p>--%>
         </div>
 

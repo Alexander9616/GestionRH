@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form id="formDetallesSolicitud" runat="server">
+  
          <br /> &nbsp;<asp:LinkButton runat="server" ID="btnVolver" ForeColor="Blue">Volver</asp:LinkButton>
         <center><asp:Label runat="server" Font-Bold="True" Font-Size="XX-Large" CssClass="Texto">Solicitudes de Permiso</asp:Label></center><hr /><br />
         <div align="center">
@@ -85,7 +85,5 @@
             <br />
             <asp:Label runat="server" ID="lblResultado" ForeColor="Red">Aqui Se mostrara el resultado</asp:Label>
         </div>
-
-    </form>
 </asp:Content>
 

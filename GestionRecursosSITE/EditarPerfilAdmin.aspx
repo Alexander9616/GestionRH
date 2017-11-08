@@ -25,7 +25,9 @@
                         <tr>
                             <td>Teléfono</td>
                             <td><asp:TextBox ID="txtTelefono" runat="server" OnTextChanged="txtTelefono_TextChanged" /></td>
-                            <td runat="server" id="telefonotd"></td>
+                            <td runat="server" id="telefonotd">
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Digite datos correctos" ValidationExpression="([+]?([5][0][3]){1})|([267]{1}[0-9]{3}[ -]?[0-9]{4})"></asp:RegularExpressionValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="3">

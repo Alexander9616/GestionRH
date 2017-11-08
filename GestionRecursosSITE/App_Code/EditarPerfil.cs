@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 /// </summary>
 public class EditarPerfil
 {
-    private static string cadena = "";
+    
     private static string consulta;
     private static SqlCommand cmd;
 

@@ -11,7 +11,7 @@ public partial class EditarPerfilGerente : System.Web.UI.Page
     private static string direccion, telefono;
     protected void Page_Load(object sender, EventArgs e)
     {
-        id = "Gerente1"; //esto debe cambiar por el valor que envía la sesión por medio de asp
+        id = Session["User"].ToString();
         lblNombre.Text = "<i>" + EditarPerfil.Nombre(id) + "</i>";
         lblUser.Text = "<i>" + EditarPerfil.Usuario(id) + "</i>";
         telefono = EditarPerfil.Telefono(id);
