@@ -6,7 +6,7 @@
 
 /*Para Botones*/
 
-input[type="button"],.boton
+input[type="button"],input[type="reset"],.boton
 {
 	background: #2699FB;
   border-color: transparent;
@@ -97,3 +97,4 @@ td
 {
     color:#2699FB;
 }
+

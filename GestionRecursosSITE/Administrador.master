@@ -43,7 +43,9 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/add.png" width="40" height="40" />
             </div>
-            <p class="texto">Agregar Empleado</p>
+            <p class="texto">
+                <asp:LinkButton ID="lbAgregarEmpleado" runat="server" PostBackUrl="~/AgregarUsuario.aspx">Agregar Empleado</asp:LinkButton>
+            </p>
         </div>
 
         <div class="contenedor-general">

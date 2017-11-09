@@ -77,13 +77,14 @@ create table Empleados
 	direccion nvarchar (150) not null,
 	salario money not null,
 	idEstado int foreign key references EstadoEmpleados(idEstado),
-    telefono nchar(20) not null
+    telefono nchar(20) not null,
+	FechaNacimiento date not null
 );
 go
 insert into Empleados (idEmpleado,nombres,apellidos,dui,nit,clave,direccion,salario,idEstado,telefono) values
-('Empleado1', 'Oscar', 'Duran', '00000000-0', '00000000-0', '1234','dsdsdsdsd',450.00,1,'2289-9635'),
-('Administrador1', 'Rene', 'Hernandez', '00000000-0', '00000000-0', '1234', 'dsdsdsd',450.00,1,'2289-9635'),
-('Gerente1', 'Ismael', 'Cortez', '00000000-0', '00000000-0', '1234','dsadsadsadsad',450.00,1,'2289-9635');
+('Empleado1', 'Oscar', 'Duran', '00000000-0', '00000000-0', '1234','dsdsdsdsd',450.00,1,'2289-9635','2007-05-19'),
+('Administrador1', 'Rene', 'Hernandez', '00000000-0', '00000000-0', '1234', 'dsdsdsd',450.00,1,'2289-9635','2007-05-19'),
+('Gerente1', 'Ismael', 'Cortez', '00000000-0', '00000000-0', '1234','dsadsadsadsad',450.00,1,'2289-9635','2007-05-19');
 go
 create table EmpleadosCargo
 (
@@ -195,4 +196,26 @@ begin
 	update Empleados
 	set clave = @pass
 	where idEmpleado = @id
+end
+
+--Agregar Usuario
+go
+create procedure spAgregarUsuario
+@idEmpleado char(20),
+@nombres nvarchar(50),
+@apellidos nvarchar(50),
+@dui char(10),
+@nit char(17),
+@FechaIngreso date,
+@clave nvarchar(20),
+@direccion nvarchar(150),
+@salario money,
+@idEstado int,
+@telefono nchar(20),
+@FechaNacimiento date,
+@cargo int
+as
+begin
+	insert into Empleados values(@idEmpleado,@nombres,@apellidos,@dui,@nit,@FechaIngreso,@clave,@direccion,@salario,@idEstado,@telefono,@FechaNacimiento)
+	insert into EmpleadosCargo values(@idEmpleado,@cargo)
 end

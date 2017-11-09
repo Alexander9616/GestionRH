@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gerente.master" AutoEventWireup="true"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gerente.master" AutoEventWireup="true" CodeFile="GenerarNominas.aspx.cs" Inherits="GenerarNominas" %>
 
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
-   
+    <form id="formPermisos" runat="server">
         
         <center><asp:Label ID="Label1" runat="server" Text="Solicitud de Permiso:"></asp:Label>
         <br />
@@ -13,6 +13,7 @@
             <asp:TextBox ID="txtDescripcion" runat="server" Height="74px" TextMode="MultiLine" Width="241px"></asp:TextBox>
         </center>
         
+    </form>
 </asp:Content>
 
 
