@@ -12,7 +12,6 @@
         <b>Agregar Usuario</b>
     </div>
     <center>
-        <form>
             <table>
 	            <tr>
 		            <td>Nombres</td>
@@ -33,7 +32,7 @@
 	            <tr>
 		            <td>Cargo</td>
 		            <td><asp:DropDownList ID="ddlCargo" runat="server" DataValueField="Cargo" DataSourceID="SqlDataSource1" DataTextField="Cargo"></asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Alexander-bdPYMES %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMESConnectionString %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="ValidarCargo" runat="server" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ControlToValidate="ddlCargo"></asp:RequiredFieldValidator>
@@ -103,7 +102,6 @@
                     </center>
                 </tr>
             </table>
-        </form>
 <asp:Label ID="prueba" runat="server" Text=""></asp:Label>
     </center>
 </asp:Content>

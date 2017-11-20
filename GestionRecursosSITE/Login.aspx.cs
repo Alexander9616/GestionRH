@@ -21,8 +21,9 @@ public partial class Login : System.Web.UI.Page
             conexion.cerrar();
             if (LoginM.autenticar(usuario, password) == true)
             {
-                Session["TUsuario"]= LoginM.tipoUser(usuario);
+                
                 Session["User"] = usuario;
+                Session["TUsuario"] = LoginM.tipoUser(usuario);
                 switch (LoginM.tipoUser(usuario))
                 {
                   

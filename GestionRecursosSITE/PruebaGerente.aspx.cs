@@ -9,7 +9,14 @@ public partial class PruebaGerente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null || Session["TUSuario"].ToString() != "3")
+        try
+        {
+            if (Session["User"] == null || Session["TUSuario"].ToString() != "3")
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
+        catch
         {
             Response.Redirect("Login.aspx");
         }

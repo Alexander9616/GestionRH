@@ -81,7 +81,7 @@ create table Empleados
 	FechaNacimiento date not null
 );
 go
-insert into Empleados (idEmpleado,nombres,apellidos,dui,nit,clave,direccion,salario,idEstado,telefono) values
+insert into Empleados (idEmpleado,nombres,apellidos,dui,nit,clave,direccion,salario,idEstado,telefono,FechaNacimiento) values
 ('Empleado1', 'Oscar', 'Duran', '00000000-0', '00000000-0', '1234','dsdsdsdsd',450.00,1,'2289-9635','2007-05-19'),
 ('Administrador1', 'Rene', 'Hernandez', '00000000-0', '00000000-0', '1234', 'dsdsdsd',450.00,1,'2289-9635','2007-05-19'),
 ('Gerente1', 'Ismael', 'Cortez', '00000000-0', '00000000-0', '1234','dsadsadsadsad',450.00,1,'2289-9635','2007-05-19');
@@ -219,3 +219,4 @@ begin
 	insert into Empleados values(@idEmpleado,@nombres,@apellidos,@dui,@nit,@FechaIngreso,@clave,@direccion,@salario,@idEstado,@telefono,@FechaNacimiento)
 	insert into EmpleadosCargo values(@idEmpleado,@cargo)
 end
+

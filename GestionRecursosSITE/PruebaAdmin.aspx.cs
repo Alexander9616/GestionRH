@@ -9,9 +9,7 @@ public partial class PriebaAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null || Session["TUSuario"].ToString() != "2")
-        {
-            Response.Redirect("Login.aspx");
-        }
+       
+
     }
 }

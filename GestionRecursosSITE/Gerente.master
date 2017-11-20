@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Empleado.master.cs" Inherits="Empleado" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Gerente.master.cs" Inherits="Gerente" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/User.png" width="40" height="40" />
             </div>
-            <p class="texto">Nombre de Usuario</p>
+            <p class="texto"><asp:Label runat="server" ID="lblNombre" Text="Nombre de Usuario"></asp:Label></p>
         </div>
 
         <div id="contenedor-general-primero" class="contenedor-general">
@@ -35,7 +35,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/nomina.png" width="40" height="40" />
             </div>
-            <p class="texto"><a href="GenerarNominas.aspx">Generar Nóminas</a></p>
+            <p class="texto"><a href="Generar Nominas.aspx">Generar Nóminas</a></p>
         </div>
         
         <div class="contenedor-general">

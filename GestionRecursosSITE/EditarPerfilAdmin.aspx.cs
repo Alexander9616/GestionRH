@@ -11,7 +11,14 @@ public partial class EditarPerfilAdmin : System.Web.UI.Page
     private static string direccion, telefono;
     protected void Page_Load(object sender, EventArgs e)
     {
-        id = Session["User"].ToString();
+        try
+        {
+            id = Session["User"].ToString();
+        }
+        catch
+        {
+
+        }
         lblNombre.Text = "<i>" + EditarPerfil.Nombre(id) + "</i>";
         lblUser.Text = "<i>" + EditarPerfil.Usuario(id) + "</i>";
         telefono = EditarPerfil.Telefono(id);

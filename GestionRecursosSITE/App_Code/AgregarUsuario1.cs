@@ -15,29 +15,30 @@ public class AgregarUsuario1
     private static DataSet ds = new DataSet();
     private static SqlDataAdapter da = new SqlDataAdapter();
 
-    //public static DataSet MostrarCargos()
-    //{
-    //    consulta = "Select Cargo from Cargos";
-    //    cmd.CommandText = consulta;
-    //    cmd.Connection = conexion.sqlConexion;
-    //    DataSet ds = new DataSet();
-    //    SqlDataAdapter da = new SqlDataAdapter();
-    //    try
-    //    {
-    //        if (conexion.conectar())
-    //        {
-    //            da.SelectCommand = cmd;
-    //            da.Fill(ds);
-    //            conexion.cerrar();   
-    //        }
-    //        return ds;
-    //    }
-    //    catch
-    //    {
+    public static DataTable MostrarCargos()
+    {
+        consulta = "Select Cargo from Cargos";
+        
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataTable ds = new DataTable();
+        try
+        {
+            if (conexion.conectar())
+            {
+                cmd.CommandText = consulta;
+                cmd.Connection = conexion.sqlConexion;
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                conexion.cerrar();
+            }
+            return ds;
+        }
+        catch
+        {
 
-    //        return ds;
-    //    }
-    //}
+            return ds;
+        }
+    }
 
 
 

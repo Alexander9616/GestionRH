@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 
 public partial class Generar_Nominas : System.Web.UI.Page
 {
+    string UserActual = string.Empty;
     protected void Page_Load(object sender, EventArgs e)
     {
+        UserActual = Session["User"].ToString();
         ddlEstados.DataSource = Nominas.estadoEmpleados();
         if(!Page.IsPostBack)
         {
@@ -16,31 +18,29 @@ public partial class Generar_Nominas : System.Web.UI.Page
             ddlEstados.DataValueField = "idEstado";
             ddlEstados.DataBind();
         }
-        grvEmpleados.DataSource = Nominas.ListaEmpleados();
+        grvEmpleados.DataSource = Nominas.ListaEmpleados(UserActual);
         grvEmpleados.DataBind();
     }
 
     protected void ddlEstados_SelectedIndexChanged(object sender, EventArgs e)
     {
         int id = Convert.ToInt32(ddlEstados.SelectedValue);
-        grvEmpleados.DataSource=Nominas.buscarEstado(id);
+        grvEmpleados.DataSource=Nominas.buscarEstado(id,UserActual);
         grvEmpleados.DataBind();
-        if (Nominas.buscarEstado(id)==null)
+        if (grvEmpleados.Rows.Count==0)
         {
-            divDatos.Visible = true;
-            divDatos.InnerHtml = "<center><font>No se encontraron resultados...</font><center>";
+            lblResultado.Text = "No se encontraron resultados para \""+ddlEstados.SelectedItem.Text+"\" ";
         }
         else
         {
-            
+            lblResultado.Text = string.Empty;
         }
-
-           
     }
 
     protected void btnTodos_Click(object sender, EventArgs e)
     {
-        grvEmpleados.DataSource = Nominas.ListaEmpleados();
+        lblResultado.Text = string.Empty;
+        grvEmpleados.DataSource = Nominas.ListaEmpleados(UserActual);
         grvEmpleados.DataBind();
     }
 
@@ -53,17 +53,16 @@ public partial class Generar_Nominas : System.Web.UI.Page
         }
         else
         {
-            grvEmpleados.DataSource = Nominas.buscarEmpleado(buscar);
+            grvEmpleados.DataSource = Nominas.buscarEmpleado(buscar,UserActual);
             grvEmpleados.DataBind();
         }
-        if (Nominas.buscarEmpleado(buscar) == null)
+        if(grvEmpleados.Rows.Count==0)
         {
-            divDatos.Visible = true;
-            divDatos.InnerHtml = "<center><font>No se encontraron resultados...</font><center>";
+            lblResultado.Text = "No se encontraron resultados para \""+txtBuscar.Text+"\"...";
         }
         else
         {
-
+            lblResultado.Text = string.Empty;
         }
     }
 }

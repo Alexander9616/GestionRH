@@ -15,8 +15,8 @@
         </asp:DropDownList> &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button runat="server" ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click1"/>
     </div>
-    <div style="margin:0 auto; margin-top:30px; height:2%;" id="divDatos" runat="server">
-
+    <div style="margin:0 auto; margin-top:30px; height:2%; text-align:center;" id="divDatos" runat="server">
+        <asp:Label runat="server" ID="lblResultado" Font-Size="XX-Large" Font-Bold="true"></asp:Label>
     </div>
     <div style="margin:0 auto; margin-top:0; height:40%;">
         <center>

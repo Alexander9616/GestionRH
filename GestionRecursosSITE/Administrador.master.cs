@@ -9,6 +9,11 @@ public partial class Administrador : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lblNombre.Text = EditarPerfil.Nombre(Session["User"].ToString());
+    }
+    protected void lbCerrarSesion_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        Session.Abandon();
     }
 }

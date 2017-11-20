@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gerente.master" AutoEventWireup="true" CodeFile="GenerarNominas.aspx.cs" Inherits="GenerarNominas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gerente.master" AutoEventWireup="true" %>
 
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
