@@ -34,7 +34,9 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/Consultar.png" width="40" height="40" />
             </div>
-            <p class="texto">Consultar Horarios</p>
+            <p class="Texto">
+                <asp:LinkButton ID="lbAsignarHorario" runat="server" PostBackUrl="~/Asignar_Horas.aspx">    Asignar Horario</asp:LinkButton>
+            </p>
         </div>
 
         

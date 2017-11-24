@@ -56,10 +56,12 @@ th
 th,td
 {
 	border-bottom: 1px solid #2699FB;
+    padding-left:35px;
 }
 td
 {
     font-weight:bold;
+    color:#2699FB;
 }
 /*Selección General*/
 ::selection 

@@ -3,6 +3,8 @@ go
 use bdPYMES;
 go
 
+
+/*
 create table DiasLaborales
 (
 	idDia int identity(1,1) primary key,
@@ -23,6 +25,8 @@ create table Horarios
 	finalReceso time (4)not null,
 	horaSalida time (4) not null,
 );
+
+
 go
 insert into Horarios(horaEntrada,inicioReceso,finalReceso,horaSalida)
 values	('8:00AM','12:00','1:00PM','5:00PM'),
@@ -42,7 +46,9 @@ insert into Dias_Horarios values(1,1);
 insert into Dias_Horarios values(2,2);
 insert into Dias_Horarios values(3,1);
 insert into Dias_Horarios values(4,4);
-insert into Dias_Horarios values(4,2);
+insert into Dias_Horarios values(4,2);*/
+
+
 go
 create table Cargos
 (
@@ -96,6 +102,7 @@ insert into EmpleadosCargo values('Empleado1',1);
 insert into EmpleadosCargo values('Administrador1',2);
 insert into EmpleadosCargo values('Gerente1',3);
 go
+/*
 create table Empleados_Horarios
 (
 idEmpleado char(20) foreign key references Empleados(idEmpleado),
@@ -104,7 +111,7 @@ idHorario int foreign key references Horarios(idHorario)
 go
 insert into Empleados_Horarios values ('Empleado1',1);
 insert into Empleados_Horarios values('Administrador1',2);
-insert into Empleados_Horarios values('Gerente1',3);
+insert into Empleados_Horarios values('Gerente1',3);*/
 go
 create table EstadoPermiso
 (
@@ -220,3 +227,48 @@ begin
 	insert into EmpleadosCargo values(@idEmpleado,@cargo)
 end
 
+go
+--Creando tablas de Horarios
+go
+create table Horarios
+(
+	idHorario int primary key identity(1,1) not null,
+	Dias nvarchar(75),
+	InicioReceso time,
+	FinReceseo time,
+	Entrada time,
+	Salida time,
+	Estado int
+)
+go
+create table EmpleadoHorarios
+(
+	idEmpleadoHorario int primary key identity(1,1) not null,
+	idEmpleado char(20) foreign key references Empleados(idEmpleado),
+	idHorario int foreign key references Horarios(idHorario)
+)
+go
+insert into EmpleadoHorarios
+values ('Administrador1',3),
+	   ('Empleado1',1),
+	   ('Gerente1',3)
+go
+--Procedimientos para mostrar Horarios
+go
+create procedure spMostrar
+@id int
+as
+begin
+	select Dias,Substring(CAST(Entrada as varchar),0,9)+' - '+Substring(CAST(Salida as varchar),0,9) as Horario, 
+	Substring(Cast(inicioReceso as varchar),0,9) + ' - '+ Substring(cast(FinReceseo as varchar),0,9) as Receso
+	from Horarios 
+	where idHorario = @id
+end
+
+--Procedimiento para mostrar el tipo de Horario
+go
+create procedure spNumHorario
+as
+begin
+	select 'Horario ' + CAST(idHorario as varchar) as [Tipo de Horario] from Horarios
+end

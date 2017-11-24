@@ -150,4 +150,26 @@ public class AgregarUsuario1
         }
         return user;
     }
+
+    public static DataSet MostrarHorario(int tipo)
+    {
+        try
+        {
+            if (conexion.conectar())
+            {
+                cmd.Connection = conexion.sqlConexion;
+                cmd.CommandText = "spMostrarHorario ";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", tipo);
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                conexion.cerrar();
+            }
+            return ds;
+        }
+        catch (Exception)
+        {
+            return ds;
+        }
+    }
 }

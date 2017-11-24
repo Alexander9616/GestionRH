@@ -11,34 +11,11 @@ public partial class AgregarUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //LlenarAnos();
-        //Cargos();
+        
 
     }
 
-    //void LlenarAnos()
-    //{
-    //    int ano = DateTime.Today.Year;
-    //    ArrayList anos = new ArrayList();
-    //    for (int i = ano; i >= 1995; i--)
-    //    {
-    //        anos.Add(i);
-    //    }
-    //    ddlAno.DataSource = anos;
-    //    ddlAno.DataBind();
-    //}
-
-    //void Cargos()
-    //{
-    //    ddlCargo.DataSource = AgregarUsuario1.MostrarCargos();
-    //    ddlCargo.DataTextField = "Cargo";
-    //    ddlCargo.DataValueField = "Cargo";
-    //    ddlCargo.DataBind();
-    //    if (ddlCargo.Items.Count == 0)
-    //    {
-    //        ddlCargo.Text = "Error al conectar";
-    //    }
-    //}
+    
 
     protected string CrearUsuario()
     {
@@ -77,8 +54,8 @@ public partial class AgregarUsuario : System.Web.UI.Page
         int estado = 1; //Lo pongo quemado por no saber cuales son los estados :v
         if (AgregarUsuario1.AgregarUsuario(idEmpleado,nombres,apellidos,dui,nit,FechaIngreso,claveUsuario,direccion,salario,estado,telefono,FechaNacimiento,cargo))
         {
-            Response.Write("<script>alert('Registro Insertado Exitosamente');</script>");
-            Response.Write("<script>location.href='UsuarioCreado.aspx';</script>");
+            Response.Write("<script>alert('Registro Insertado Exitosamente \\nUsuario: " + idEmpleado + "\\nContraseña: " + claveUsuario + "');</script>");
+            Response.Write("<script>location.href='AgregarUsuario.aspx';</script>");
         }
         else
         {
@@ -109,4 +86,16 @@ public partial class AgregarUsuario : System.Web.UI.Page
         return contra;
     }
 
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int tipo = Convert.ToInt32(ddlTipoHorario.SelectedIndex) + 1;
+        MostrarHorario(tipo);
+    }
+
+    void MostrarHorario(int tipo)
+    {
+        gvHorario.DataSource = AgregarUsuario1.MostrarHorario(tipo);
+        gvHorario.DataBind();
+    }
 }
