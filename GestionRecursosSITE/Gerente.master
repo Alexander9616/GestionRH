@@ -43,7 +43,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/Notificar.png" width="40" height="40" />
             </div>
-            <p class="texto"><a href="Permisos.aspx">Notificar Solicitudes</a></p>
+            <p class="texto"><asp:LinkButton runat="server" PostBackUrl="~/NotificarPermisos.aspx">Notificar Permisos</asp:LinkButton></p>
         </div>
 
         <div class="contenedor-general">
@@ -54,6 +54,8 @@
             <p class="texto">
                 <asp:LinkButton ID="lbEditarPerfilGerente" runat="server" PostBackUrl="~/EditarPerfilGerente.aspx">EditarPerfil</asp:LinkButton>
             </p>
+            
+            <p class="Texto"><asp:LinkButton runat="server" ID="lbSolicitarPermiso" PostBackUrl="~/SolicitarPermisos.aspx">Solicitar Permisos</asp:LinkButton></p>
         </div>
         <br /><br /><br /><br /><br /><br />
         <div class="contenedor-general" runat="server">

@@ -153,12 +153,14 @@ public class AgregarUsuario1
 
     public static DataSet MostrarHorario(int tipo)
     {
+        cmd = new SqlCommand();
+        ds = new DataSet();
         try
         {
             if (conexion.conectar())
             {
                 cmd.Connection = conexion.sqlConexion;
-                cmd.CommandText = "spMostrarHorario ";
+                cmd.CommandText = "spMostrar ";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id", tipo);
                 da.SelectCommand = cmd;

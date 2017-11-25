@@ -143,7 +143,8 @@ go
 insert into descripcionDuracion values('Hora');
 insert into descripcionDuracion values('Dia');
 insert into descripcionDuracion values('Mes');
-go
+--go
+/*
 create table DuracionPermisos
 (
 	idDuracion int identity(1,1) primary key not null,
@@ -154,7 +155,7 @@ go
 insert into DuracionPermisos values(1,1);
 insert into DuracionPermisos values(1,2);
 insert into DuracionPermisos values(15,2);
-insert into DuracionPermisos values(3,3);
+insert into DuracionPermisos values(3,3);*/
 go
 
 create table Permisos
@@ -162,20 +163,14 @@ create table Permisos
 	idPermiso int identity (1,1) primary key,
 	idEmpleado char(20) foreign key references Empleados(idEmpleado),
 	FechaHora datetime default sysdatetime(),
-	duracion int foreign key references DuracionPermisos(idDuracion),
+	duracion int not null,
+	DescripcionDuracion int foreign key references descripcionDuracion(idDescripcion),
 	diaInicio date,
 	diFinal date,
 	idMotivo int foreign key references MotivosPermiso(idMotivo),
 	idEstado int foreign key references EstadoPermiso(idEstado)
 );
-
 go
-select Empleados.idEmpleado,Empleados.nombres,Empleados.apellidos,Horarios.horaEntrada,Horarios.horaSalida,DiasLaborales.dia
-from Empleados inner join Empleados_Horarios 
-on Empleados.idEmpleado=Empleados_Horarios.idEmpleado inner join Horarios
-on Empleados_Horarios.idHorario=Horarios.idHorario inner join Dias_Horarios
-on Horarios.idHorario= Dias_Horarios.idHorario inner join DiasLaborales
-on DiasLaborales.idDia=Dias_Horarios.idDia
 
 select count(idEmpleado) from Empleados where idEmpleado='Empleado1' and clave='1234';
 
@@ -240,21 +235,26 @@ create table Horarios
 	Salida time,
 	Estado int
 )
+select * from Horarios
 go
+Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Lunes-Viernes','12:00AM','1:30PM','8:00AM','4:00PM',1);
+Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Sabado-Domingo','12:00AM','1:30PM','7:30AM','2:15PM',1);
+Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Lunes-Sabado','11:30AM','1:00PM','7:00AM','3:30PM',1);
+go
+
 create table EmpleadoHorarios
 (
 	idEmpleadoHorario int primary key identity(1,1) not null,
 	idEmpleado char(20) foreign key references Empleados(idEmpleado),
 	idHorario int foreign key references Horarios(idHorario)
 )
-go
+
 insert into EmpleadoHorarios
 values ('Administrador1',3),
 	   ('Empleado1',1),
-	   ('Gerente1',3)
+	   ('Gerente1',3);
 go
 --Procedimientos para mostrar Horarios
-go
 create procedure spMostrar
 @id int
 as
@@ -272,3 +272,76 @@ as
 begin
 	select 'Horario ' + CAST(idHorario as varchar) as [Tipo de Horario] from Horarios
 end
+go
+--Trigger para calcular la fecha final del permiso
+create trigger trgFechaFinal
+on Permisos
+after insert as 
+begin
+	declare @id int 
+	set @id=(select idPermiso from inserted)
+	declare @fechaInicial date
+	declare @fechaFinal date
+	set @fechaInicial=(select diaInicio from inserted)
+	declare @duracion int
+	set @duracion=(select duracion from inserted)
+	declare @descripcion int
+	set @descripcion=(select DescripcionDuracion from inserted)
+
+	if @descripcion=3
+	begin
+		set @fechaFinal=convert(date,dateadd(month,@duracion,@fechaInicial));
+		set @fechaFinal=convert(date,DATEADD(day,@duracion,@fechaFinal))
+		set @fechaFinal=convert(date,DATEADD(year,0,@fechaFinal));
+		update Permisos set diFinal=@fechaFinal where idPermiso=@id;
+	end
+	else if @descripcion=2
+	begin
+		set @fechaFinal=Convert(date,DATEADD(DAY,@duracion,@fechaInicial));
+		update Permisos set diFinal=@fechaFinal where idPermiso=@id;
+	end
+	else
+	begin
+		set @fechaFinal=@fechaInicial;
+		update Permisos set diFinal=@fechaFinal where idPermiso=@id;
+	end
+
+end
+go
+
+select * from Permisos;
+insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
+values('Gerente1',1,3,'23-01-2017',1,1);
+go
+insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
+values('Gerente1',1,3,'23-02-2017',1,1);
+select * from Permisos
+insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
+values('Administrador1',2,2,'23-02-2017',1,1);
+insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
+values('Empleado1',2,1,'23-02-2017',1,1);
+select * from Permisos
+
+
+
+--procedimiento almacenado para insertar permisos
+go
+CREATE PROCEDURE stpNuevoPermiso
+	@id char(20),
+	@duracion int,
+	@descripcion int,
+	@diaInicial date,
+	@motivo int,
+	@estado int 
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
+	values(@id,@duracion,@descripcion,@diaInicial,@motivo,@estado);
+END
+GO
+
+exec spNumHorario
+
+select * from Horarios

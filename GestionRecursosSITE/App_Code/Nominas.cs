@@ -117,5 +117,32 @@ public class Nominas
         }
         return ds;
     }
-         
+
+    public static DataSet ListaTodos()
+    {
+        DataSet ds = new DataSet();
+        consulta = "select e.idEmpleado as ID,e.nombres as Nombre,e.apellidos as Apellido,e.telefono,Cargos.Cargo,es.estado ";
+        consulta += "from Empleados as e inner join EstadoEmpleados as es ";
+        consulta += "on e.idEstado = es.idEstado inner join EmpleadosCargo as ec ";
+        consulta += "on ec.idEmpleado = e.idEmpleado inner join Cargos ";
+        consulta += "on Cargos.idCargo = ec.idCargo;";
+
+        cmd = new SqlCommand();
+        try
+        {
+            cmd.CommandText = consulta;
+            conexion.conectar();
+            cmd.Connection = conexion.sqlConexion;
+            ad = new SqlDataAdapter();
+            ad.SelectCommand = cmd;
+            ad.Fill(ds);
+            conexion.cerrar();
+        }
+        catch
+        {
+            ds = null;
+        }
+        return ds;
+    }
+
 }
