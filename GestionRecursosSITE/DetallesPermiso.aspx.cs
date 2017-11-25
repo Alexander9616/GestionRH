@@ -7,17 +7,37 @@ using System.Web.UI.WebControls;
 
 public partial class DetallesPermiso : System.Web.UI.Page
 {
-
+    string ide;
     protected void Page_Load(object sender, EventArgs e)
     {
-        string ide = Request.QueryString["id"];
+         ide = Request.QueryString["id"];
 
-        dvPermiso.DataSource = solicitudPermisos.PermisoEnEspera(Convert.ToInt32(ide));
+        dvPermiso.DataSource = solicitudPermisos.DetallePermiso(Convert.ToInt32(ide));
         dvPermiso.DataBind();
+        if(!Page.IsPostBack)
+        {
+            ddlAcciones.DataSource = solicitudPermisos.ObtenerEstados();
+            ddlAcciones.DataTextField = "estado";
+            ddlAcciones.DataValueField = "idEstado";
+            ddlAcciones.DataBind();
+        }
+       
+    }
 
-        ddlAcciones.DataSource = solicitudPermisos.ObtenerEstados();
-        ddlAcciones.DataTextField = "estado";
-        ddlAcciones.DataValueField = "idEstado";
-        ddlAcciones.DataBind();
+    protected void btnProcesar_Click(object sender, EventArgs e)
+    {
+        int estado = Convert.ToInt32(ddlAcciones.SelectedValue);
+        if(estado==1)
+        {
+            lblMensaje.Text = "Seleccione un estado Diferente!";
+        }
+        else
+        {
+            lblMensaje.Text = string.Empty;
+            lblResultado.Text = solicitudPermisos.Notificar(Convert.ToInt32(ide), Session["User"].ToString(), estado);
+
+            dvPermiso.DataSource = solicitudPermisos.DetallePermiso(Convert.ToInt32(ide));
+            dvPermiso.DataBind();
+        }
     }
 }

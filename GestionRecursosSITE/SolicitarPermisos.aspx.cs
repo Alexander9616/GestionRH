@@ -24,7 +24,7 @@ public partial class SolicitarPermisos : System.Web.UI.Page
             ddlMotivos.DataValueField = "idMotivo";
             ddlMotivos.DataBind();
 
-            grvDatos.DataSource = Nominas.ListaTodos();
+            grvDatos.DataSource = Nominas.ListaEmpleados(Session["User"].ToString());
             grvDatos.DataBind();
         }
     }
@@ -34,11 +34,11 @@ public partial class SolicitarPermisos : System.Web.UI.Page
         string fechaActual = DateTime.Today.ToString("yyyy/MM/dd");
         if(Convert.ToDateTime(fechaActual)>Convert.ToDateTime(txtFechaInicio.Text))
         {
-            Response.Write("<script>alert('Debe Ingresar una fecha valida!','Error')</script>");
+            Response.Write("<script>alert('Debe Ingresar una fecha valida!','Error');</script>");
         }
         else if(solicitudPermisos.validar(txtEmpleado.Text)>=1 || solicitudPermisos.validar(txtEmpleado.Text)<0)
         {
-            Response.Write("<script>alert('Este usuario tiene solicitudes pendientes, o intente mas tarde','')</script>");
+            Response.Write("<script>alert('Este usuario tiene solicitudes pendientes, o intente mas tarde','');</script>");
         }
         else
         {

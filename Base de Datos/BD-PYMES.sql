@@ -342,6 +342,28 @@ BEGIN
 END
 GO
 
-exec spNumHorario
+--Tabla y procedimiento almacenado para controlar las notificaciones de permisos
+create table AuditoriaPermisos
+(
+	idPermiso int primary key,
+	responsable char(20) not null,
+	estado int not null,
+	FechaHora datetime default sysdatetime()
+);
+go
+go
+CREATE PROCEDURE stpNotificar
+	@id int,
+	@responsable char(20),
+	@estado int 
 
-select * from Horarios
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	update Permisos set idEstado=@estado where idPermiso=@id;
+	insert into AuditoriaPermisos(idPermiso,responsable,estado) values(@id,@responsable,@estado);
+END
+GO
+select * from AuditoriaPermisos
+

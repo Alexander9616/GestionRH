@@ -18,7 +18,7 @@
                         <asp:Button runat="server" ID="btnBuscar" Text="Buscar" />
                     </td>
                     <td>
-                        <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="Blue">Historial De Permisos</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="Blue" PostBackUrl="~/HistorialPermisos.aspx">Historial De Permisos</asp:LinkButton>
                     </td>
                 </tr>
             </table>

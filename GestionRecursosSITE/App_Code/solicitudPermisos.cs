@@ -57,7 +57,7 @@ public class solicitudPermisos
         return dt;
     }
 
-    public static DataTable ObtenerMotivos()//metodo para llenar dropdowlist con los metivos preestblecidos
+    public static DataTable ObtenerMotivos()//metodo para llenar dropdowlist con los motivos preestblecidos
     {
         DataTable dt = new DataTable();
         ad = new SqlDataAdapter();
@@ -151,11 +151,11 @@ public class solicitudPermisos
         }
         return ds;
     }
-    public static DataSet PermisoEnEspera(int id)
+    public static DataSet DetallePermiso(int id)
     {
          DataSet ds = new DataSet();
          ad = new SqlDataAdapter();
-        consulta = "select p.idPermiso,p.idEmpleado,concat(em.nombres,' ',em.apellidos) as Nombre,p.FechaHora,concat(p.duracion,' ',d.descripcion)as Duracion,diaInicio,diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado inner join Empleados as em on em.idEmpleado = p.idEmpleado where p.idEstado = 1 and p.idPermiso=@id;";
+        consulta = "select p.idPermiso,p.idEmpleado,concat(em.nombres,' ',em.apellidos) as Nombre,p.FechaHora,concat(p.duracion,' ',d.descripcion)as Duracion,diaInicio,diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado inner join Empleados as em on em.idEmpleado = p.idEmpleado where  p.idPermiso=@id;";
         cmd = new SqlCommand();
         conexion.conectar();
         cmd.Parameters.AddWithValue("@id", id);
@@ -173,6 +173,32 @@ public class solicitudPermisos
             ds = null;
         }
         return ds;
+
+    }
+    public static string Notificar(int id,string responsable,int estado)
+    {
+
+        string resultado = string.Empty;
+        cmd = new SqlCommand();
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.CommandText = "stpNotificar ";
+        
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.Parameters.AddWithValue("@responsable",responsable);
+        cmd.Parameters.AddWithValue("@estado",estado);
+        try
+        {
+            conexion.conectar();
+            cmd.Connection = conexion.sqlConexion;
+            cmd.ExecuteNonQuery();
+            conexion.cerrar();
+            resultado = "Notificacion Exitosa!";
+        }
+        catch
+        {
+            resultado = "No se pudo procesar!";
+        }
+        return resultado;
 
     }
 

@@ -28,12 +28,13 @@
                  <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
              </asp:DetailsView>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              </center>             
-        <div width="50%" style="margin:auto; margin-left:70%;">
+        <div width="50%" style="margin-left:55%; margin-right: auto; margin-top: auto; margin-bottom: auto;">
             Accion: &nbsp;&nbsp;
             <asp:DropDownList ID="ddlAcciones" runat="server">
             </asp:DropDownList>
+            <asp:Label ID="lblMensaje" runat="server" ForeColor="Red"></asp:Label>
             <br />
-            <asp:Button  runat="server" ID="btnProcesar" Text="Procesar" CssClass="boton"/>
+            <asp:Button  runat="server" ID="btnProcesar" Text="Procesar" CssClass="boton" OnClick="btnProcesar_Click"/>
             <br />
             <asp:Label runat="server" ID="lblResultado" ForeColor="Red"></asp:Label>
         </div>
