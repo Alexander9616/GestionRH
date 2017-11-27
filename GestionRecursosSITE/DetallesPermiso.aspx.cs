@@ -16,7 +16,7 @@ public partial class DetallesPermiso : System.Web.UI.Page
         dvPermiso.DataBind();
         if(!Page.IsPostBack)
         {
-            ddlAcciones.DataSource = solicitudPermisos.ObtenerEstados();
+            ddlAcciones.DataSource = solicitudPermisos.ObtenerEstados2();
             ddlAcciones.DataTextField = "estado";
             ddlAcciones.DataValueField = "idEstado";
             ddlAcciones.DataBind();

@@ -39,13 +39,12 @@
                     <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="idEmpleado" HeaderText="Empleado" />
-                    <asp:BoundField DataField="FechaHora" HeaderText="Fecha De Solicitud" />
-                    <asp:BoundField DataField="Duracion" HeaderText="Duracion" >
-                    <ItemStyle HorizontalAlign="Center" />
+                    <asp:BoundField DataField="responsable" HeaderText="Responsable" />
+                    <asp:BoundField DataField="diaInicio" HeaderText="Dia Inicial" >
                     </asp:BoundField>
-                    <asp:BoundField DataField="diaInicio" HeaderText="Dia Inicio" />
-                    <asp:BoundField DataField="diFinal" HeaderText="Dia Finalizacion" />
+                    <asp:BoundField DataField="diFinal" HeaderText="Dia Final" />
                     <asp:BoundField DataField="estado" HeaderText="Estado" />
+                    <asp:BoundField DataField="FechaHora" HeaderText="Fecha de Registro" />
                 </Columns>
             </asp:GridView>
             </center>

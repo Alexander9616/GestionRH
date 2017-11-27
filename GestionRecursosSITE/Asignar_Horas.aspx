@@ -33,7 +33,7 @@
             </asp:DropDownList>
             <asp:Label ID="lblError" runat="server" Enabled="False" ForeColor="#CC0000"></asp:Label>
             <br />
-            <asp:SqlDataSource ID="Horarios" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMES-TipoHorarios %>" SelectCommand="spNumHorario" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="Horarios" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMESConnectionString %>" SelectCommand="spNumHorario" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
             </center></td>
 	</tr>
 	<tr>

@@ -13,15 +13,39 @@ public class HistorialP
     private static SqlDataAdapter ad;
     private static string consulta = string.Empty;
 
-    public static DataSet Todos(string fecha)
+    public static DataTable ObtenerEstados()
+    {
+        DataTable dt = new DataTable();
+        ad = new SqlDataAdapter();
+        cmd = new SqlCommand();
+        consulta = "select * from EstadoPermiso where idEstado <> 1 and idEstado <> 4;";
+        cmd.CommandText = consulta;
+        conexion.conectar();
+        cmd.Connection = conexion.sqlConexion;
+        ad.SelectCommand = cmd;
+        ad.Fill(dt);
+        conexion.cerrar();
+        try
+        {
+
+        }
+        catch
+        {
+            dt = null;
+        }
+        return dt;
+    }
+
+    public static DataSet Todos()
     {
         DataSet ds = new DataSet();
         cmd = new SqlCommand();
         ad = new SqlDataAdapter();
-        consulta = "select p.idPermiso,p.idEmpleado,p.FechaHora,concat(p.duracion, ' ', d.descripcion) as Duracion,p.diaInicio,p.diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado where p.diaInicio < @fechaActual;";
+        consulta = "select p.idPermiso,p.idEmpleado,ap.responsable,p.diaInicio,p.diFinal,ep.estado,ap.FechaHora ";
+        consulta += "from Permisos as p inner join AuditoriaPermisos as ap ";
+        consulta += "on p.idPermiso = ap.idPermiso inner join EstadoPermiso as ep ";
+        consulta += "on p.idEstado = ep.idEstado";
         cmd.CommandText = consulta;
-        cmd.Parameters.AddWithValue("@fechaActual", fecha);
-       
         try
         {
             conexion.conectar();
@@ -36,15 +60,17 @@ public class HistorialP
         }
         return ds;
     }
-    public static DataSet BuscarPorEmpleado(string buscar,string fecha)
+    public static DataSet BuscarPorEmpleado(string buscar)
     {
         DataSet ds = new DataSet();
         cmd = new SqlCommand();
         ad = new SqlDataAdapter();
-        consulta = "select p.idPermiso,p.idEmpleado,p.FechaHora,concat(p.duracion, ' ', d.descripcion) as Duracion,p.diaInicio,p.diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado where  p.idEmpleado like @buscar and p.diaInicio < @fechaActual;";
+        consulta = "select p.idPermiso,p.idEmpleado,ap.responsable,p.diaInicio,p.diFinal,ep.estado,ap.FechaHora ";
+        consulta += "from Permisos as p inner join AuditoriaPermisos as ap ";
+        consulta += "on p.idPermiso = ap.idPermiso inner join EstadoPermiso as ep ";
+        consulta += "on p.idEstado = ep.idEstado where ap.idEmpleado like @buscar;";
         cmd.CommandText = consulta;
         cmd.Parameters.AddWithValue("@buscar","%"+buscar+"%");
-        cmd.Parameters.AddWithValue("@fechaActual",fecha);
         try
         {
             conexion.conectar();
@@ -60,18 +86,18 @@ public class HistorialP
         return ds;
     }
 
-    public static DataSet BuscarFecha(string fechaI,string fechaF,string fechaA)
+    public static DataSet BuscarFecha(string fechaI,string fechaF)
     {
         DataSet ds = new DataSet();
         cmd = new SqlCommand();
         ad = new SqlDataAdapter();
-        consulta = "select p.idPermiso,p.idEmpleado,p.FechaHora,concat(p.duracion, ' ', d.descripcion) as Duracion,p.diaInicio,p.diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado where p.diaInicio between @fechaI and @fechaF and  p.diaInicio < @fechaA;";
+        consulta = "select p.idPermiso,p.idEmpleado,ap.responsable,p.diaInicio,p.diFinal,ep.estado,ap.FechaHora ";
+        consulta += "from Permisos as p inner join AuditoriaPermisos as ap ";
+        consulta += "on p.idPermiso = ap.idPermiso inner join EstadoPermiso as ep ";
+        consulta += "on p.idEstado = ep.idEstado where p.diaInicio between @fechaI and @fechaF;";
         cmd.CommandText = consulta;
         cmd.Parameters.AddWithValue("@fechaI",fechaI);
         cmd.Parameters.AddWithValue("@fechaF", fechaF);
-        cmd.Parameters.AddWithValue("@fechaA", fechaA);
-       
-
         try
         {
             conexion.conectar();
@@ -88,16 +114,17 @@ public class HistorialP
         return ds;
     }
 
-    public static DataSet BuscarEstado(string fecha,int estado)
+    public static DataSet BuscarEstado(int estado)
     {
         DataSet ds = new DataSet();
         cmd = new SqlCommand();
         ad = new SqlDataAdapter();
-        consulta = "select p.idPermiso,p.idEmpleado,p.FechaHora,concat(p.duracion, ' ', d.descripcion) as Duracion,p.diaInicio,p.diFinal,es.estado from Permisos as p inner join descripcionDuracion as d on p.DescripcionDuracion = d.idDescripcion inner join MotivosPermiso as m on p.idMotivo = m.idMotivo inner join EstadoPermiso as es on p.idEstado = es.idEstado where p.idEstado=@estado and p.diaInicio < @fechaActual;";
+        consulta = "select p.idPermiso,p.idEmpleado,ap.responsable,p.diaInicio,p.diFinal,ep.estado,ap.FechaHora ";
+        consulta += "from Permisos as p inner join AuditoriaPermisos as ap ";
+        consulta += "on p.idPermiso = ap.idPermiso inner join EstadoPermiso as ep ";
+        consulta += "on p.idEstado = ep.idEstado where ap.estado=@estado;";
         cmd.CommandText = consulta;
         cmd.Parameters.AddWithValue("@estado",estado);
-        cmd.Parameters.AddWithValue("@fechaActual", fecha);
-
         try
         {
             conexion.conectar();

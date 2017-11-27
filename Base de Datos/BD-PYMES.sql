@@ -123,6 +123,7 @@ go
 insert into EstadoPermiso values('En Espera');
 insert into EstadoPermiso values('Permitido');
 insert into EstadoPermiso values('Negado');
+insert into EstadoPermiso values('Caducado');
 go
 create table MotivosPermiso
 (
@@ -317,10 +318,6 @@ go
 select * from Permisos;
 insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
 values('Gerente1',1,3,'23-01-2017',1,1);
-go
-insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
-values('Gerente1',1,3,'23-02-2017',1,1);
-select * from Permisos
 insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
 values('Administrador1',2,2,'23-02-2017',1,1);
 insert into Permisos(idEmpleado,duracion,DescripcionDuracion,diaInicio,idMotivo,idEstado) 
@@ -355,7 +352,6 @@ create table AuditoriaPermisos
 	estado int not null,
 	FechaHora datetime default sysdatetime()
 );
-go
 go
 CREATE PROCEDURE stpNotificar
 	@id int,
@@ -408,3 +404,31 @@ begin
 	set idEstado = 5
 	where idEmpleado = @idEmpleado
 end
+go
+
+--Procedimiento almacenado para caducar Permisos
+go
+create procedure stpPermisoCaducado
+@fecha varchar(10)
+as
+begin
+	update Permisos set idEstado=4 where diaInicio < @fecha and idEstado=1;
+end
+go
+create procedure stpActivarPermiso
+@fecha varchar(10)
+as
+begin
+	declare @diaI date
+	set @diaI=(select diaInicio from Permisos where idEstado=2);
+	declare @diaF date
+	set @diaF=(select diFinal from Permisos where idEstado=2);
+	update Empleados set idEstado = 3 where @fecha>=@diaI and @diaF<@fecha;
+	update Empleados set idEstado = 1 where @diaF>@diaF;
+end
+go
+
+
+select * from EstadoEmpleados
+select * from Cargos
+

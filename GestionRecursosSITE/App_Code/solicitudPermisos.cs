@@ -35,6 +35,28 @@ public class solicitudPermisos
         }
         return dt;
     }
+    public static DataTable ObtenerEstados2()
+    {
+        DataTable dt = new DataTable();
+        ad = new SqlDataAdapter();
+        cmd = new SqlCommand();
+        consulta = "select * from EstadoPermiso where idEstado <> 1 and idEstado <> 4;";
+        cmd.CommandText = consulta;
+        conexion.conectar();
+        cmd.Connection = conexion.sqlConexion;
+        ad.SelectCommand = cmd;
+        ad.Fill(dt);
+        conexion.cerrar();
+        try
+        {
+
+        }
+        catch
+        {
+            dt = null;
+        }
+        return dt;
+    }
     public static DataTable ObtenerTiempo()// dia, mes u hora
     {
         DataTable dt = new DataTable();

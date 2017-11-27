@@ -40,6 +40,24 @@ public class ValidarUsuarioRegistrado
         }
     }
 
+    public static string MuestraNombre(string id)
+    {
+        cmd = new SqlCommand();
+        if (conexion.conectar())
+        {
+            cmd.Connection = conexion.sqlConexion;
+            cmd.CommandText = "select nombres from Empleados where idEmpleado = @idEmpleado";
+            cmd.Parameters.AddWithValue("@idEmpleado", id);
+            string Nombre = cmd.ExecuteScalar().ToString();
+            conexion.cerrar();
+            return Nombre;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 
     /*Cómo utilizar esta clase dentro de los *.aspx
      if (ValidarUsuarioRegistrado.ValidarUsuario(id))

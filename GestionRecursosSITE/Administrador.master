@@ -10,6 +10,7 @@
     </asp:ContentPlaceHolder>
     <link href="BarraNavegacion.css" rel="stylesheet" type="text/css" />
     <link href="Formularios.css" rel="stylesheet" type="text/css" />
+    <link href="Efectos.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form name="form" runat="server">
@@ -26,7 +27,7 @@
            <div class="logo-interior">
                <img src="Recursos/Iconos/BarraNavegacion/Solicitud.png" />
             </div>
-            <p class="texto">Estado Permisos</p>
+            <p class="texto"><asp:LinkButton runat="server" PostBackUrl="~/MiPermisoAdmin.aspx">Estado Permiso</asp:LinkButton></p>
         </div>
 
         <div class="contenedor-general">
@@ -88,7 +89,7 @@
                <%--PONER ICONOS ACÁ--%>
                <img src="Recursos/Iconos/BarraNavegacion/logout.png" />
             </div>
-            <p class="texto"><asp:LinkButton ID="lbCerrarSesion" runat="server" PostBackUrl="~/Login.aspx" OnClick="lbCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></p>
+            <p class="texto"><asp:LinkButton ID="lbCerrarSesion" runat="server" OnClick="lbCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></p>
 
         </div>
 
@@ -97,7 +98,7 @@
     
     
     <div id="Contenedor">
-        <h3 id="Titulo"><i>Logo de PYME</i></h3>
+        <div class="LogoGeneral"><a href="PruebaAdmin.aspx"><center><img src="Recursos/LogoGhost/LogoAzul.png" width="275" height="75" /></center></a></div>
         <div id="Principal" class="Texto">
              <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
                 

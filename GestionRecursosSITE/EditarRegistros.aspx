@@ -38,7 +38,7 @@
                         <asp:ListItem Value="-1">-Cargos-</asp:ListItem>
                     </asp:DropDownList>
                     <br />
-                    <asp:SqlDataSource ID="sqlCargos" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMES-Cargos %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="sqlCargos" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMESConnectionString %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="ValidarCargo" runat="server" ControlToValidate="ddlCargos" ErrorMessage="Campo Requerido**" ForeColor="#990000" ValidationGroup="Actualizar"></asp:RequiredFieldValidator>

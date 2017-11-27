@@ -9,17 +9,19 @@ public partial class Prueba : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
-        {
-            string user = Session["User"].ToString();
-            if (user == null || Session["TUSuario"].ToString() != "1")
-            {
-                Response.Redirect("Login.aspx");
-            }
-        }
-        catch
-        {
-            Response.Redirect("Login.aspx");
-        }
+        //try
+        //{
+        //    string user = Session["User"].ToString();
+        //    if (user == null || Session["TUSuario"].ToString() != "1")
+        //    {
+        //        Response.Redirect("Login.aspx");
+        //    }
+        //}
+        //catch
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
+        string bienvenido = "¡Bienvenido , "+ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString())+"!";
+        lblBienvenido.Text = bienvenido;
     }
 }

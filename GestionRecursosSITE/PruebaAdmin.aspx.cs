@@ -9,7 +9,8 @@ public partial class PriebaAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
 
+        string bienvenido = "¡Bienvenido , " + ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString()) + "!";
+        lblBienvenido.Text = bienvenido;
     }
 }

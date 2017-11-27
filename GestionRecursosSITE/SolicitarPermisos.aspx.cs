@@ -73,6 +73,7 @@ public partial class SolicitarPermisos : System.Web.UI.Page
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
+        txtEmpleado.Text = string.Empty;
         if (txtBuscar.Text==string.Empty)
         {
             Response.Write("<script>alert('Debe Ingresar El id o nombre del Empleado!','')</script>");
@@ -98,6 +99,7 @@ public partial class SolicitarPermisos : System.Web.UI.Page
 
     protected void btnMostrarTodos_Click(object sender, EventArgs e)
     {
+        txtEmpleado.Text = string.Empty;
         lblMensaje.Text = string.Empty;
         txtBuscar.Text = string.Empty;
         grvDatos.DataSource = Nominas.ListaEmpleados(Session["User"].ToString());

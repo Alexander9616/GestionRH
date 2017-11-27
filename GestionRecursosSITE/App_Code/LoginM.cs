@@ -15,7 +15,7 @@ public class LoginM
     {
         bool res = false;
         cmd = new SqlCommand();
-        consulta = "select count(*) from Empleados where idEmpleado=@user and clave=@password; ";
+        consulta = "select count(*) from Empleados where idEmpleado=@user and clave=@password and idEstado <> 5; ";
         cmd.CommandText = consulta;
         cmd.Parameters.AddWithValue("@user",user);
         cmd.Parameters.AddWithValue("@password",password);

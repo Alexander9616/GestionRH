@@ -20,5 +20,7 @@ public partial class PruebaGerente : System.Web.UI.Page
         {
             Response.Redirect("Login.aspx");
         }
+        string bienvenido = "¡Bienvenido , " + ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString()) + "!";
+        lblBienvenido.Text = bienvenido;
     }
 }
