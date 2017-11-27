@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 public class conexion
 {
-    private static string cadena = @"Data Source=.;Initial Catalog=bdPYMES;Integrated Security=True";
+    private static string cadena = @"Data Source=ALEXANDER\LOCALHOST;Initial Catalog=bdPYMES;Integrated Security=True";
     public  static SqlConnection sqlConexion;
 
     public static bool conectar()

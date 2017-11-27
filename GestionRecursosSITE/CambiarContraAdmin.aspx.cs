@@ -10,7 +10,7 @@ public partial class CambiarContraseña : System.Web.UI.Page
     private static string password, password1,id;
     protected void Page_Load(object sender, EventArgs e)
     {
-        id = "Administrador1"; //Acá cambiarlo por la sesión o el Cookie
+        id = Session["User"].ToString(); //Acá cambiarlo por la sesión o el Cookie
     }
 
     int Actualizar()

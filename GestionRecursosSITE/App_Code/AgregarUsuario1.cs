@@ -48,6 +48,7 @@ public class AgregarUsuario1
         consulta = "select count(idEmpleado) from Empleados";
         try
         {
+            cmd = new SqlCommand();
             if (conexion.conectar())
             {
                 cmd.CommandText = consulta;
@@ -68,14 +69,15 @@ public class AgregarUsuario1
         return num;
     }
 
-    public static bool AgregarUsuario(string id,string nombre,string apellido,string dui,string nit,string FechaIngreso,string clave,string direccion,double salario,int estado,string telefono,string FechaNacimiento,int cargo)
+    public static bool AgregarUsuario(string id,string nombre,string apellido,string dui,string nit,string FechaIngreso,string clave,string direccion,double salario,int estado,string telefono,string FechaNacimiento,int cargo,int horario)
     {
         
         try
         {
+            cmd = new SqlCommand();
             if (conexion.conectar())
             {
-                cmd.Connection = conexion.sqlConexion;
+                 cmd.Connection = conexion.sqlConexion;
                 cmd.CommandText = "spAgregarUsuario";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idEmpleado", id);
@@ -91,6 +93,7 @@ public class AgregarUsuario1
                 cmd.Parameters.AddWithValue("@telefono", telefono);
                 cmd.Parameters.AddWithValue("@FechaNacimiento", FechaNacimiento);
                 cmd.Parameters.AddWithValue("@cargo", cargo);
+                cmd.Parameters.AddWithValue("@idHorario", horario);
                 cmd.ExecuteNonQuery();
                 conexion.cerrar();
                 return true;

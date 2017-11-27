@@ -104,3 +104,10 @@ a:visited {
  color:white;  
  font-size:15px;
 }
+
+.titulo
+{
+    margin-left:60px;
+    line-height:40px;
+    font-size:10px;
+}

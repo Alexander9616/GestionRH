@@ -39,29 +39,58 @@ public partial class AgregarUsuario : System.Web.UI.Page
 
     protected void Registrar_Click(object sender, EventArgs e)
     {
-        string claveUsuario = Clave();
-        string idEmpleado = CrearUsuario();
-        string nombres = txtNombre.Text;
-        string apellidos = txtApellido.Text;
-        int cargo = Convert.ToInt32(ddlCargo.SelectedIndex) + 1;
-        string dui = txtDui.Text;
-        string nit = txtNit.Text;
-        string FechaNacimiento = txtFechaNacimiento.Text;
-        string FechaIngreso = txtFechaIngreso.Text;
-        string direccion = txtDireccion.Text;
-        string telefono = txtTelefono.Text;
-        double salario = Convert.ToDouble(txtSalario.Text);
-        int estado = 1; //Lo pongo quemado por no saber cuales son los estados :v
-        if (AgregarUsuario1.AgregarUsuario(idEmpleado,nombres,apellidos,dui,nit,FechaIngreso,claveUsuario,direccion,salario,estado,telefono,FechaNacimiento,cargo))
+        if (ddlCargo.SelectedIndex == 0 || ddlTipoHorario.SelectedIndex==0)
         {
-            Response.Write("<script>alert('Registro Insertado Exitosamente \\nUsuario: " + idEmpleado + "\\nContraseña: " + claveUsuario + "');</script>");
-            Response.Write("<script>location.href='AgregarUsuario.aspx';</script>");
+            Response.Write("<script>alert('Seleccione un horario o un cargo para el nuevo empleado')</script>");
         }
         else
         {
-            prueba.Text = "Error ingresando datos  " + FechaNacimiento;
-            prueba.ForeColor = System.Drawing.Color.DarkRed;
+            int cargo = Convert.ToInt16(ddlCargo.SelectedIndex);
+            int horario = Convert.ToInt16(ddlTipoHorario.SelectedIndex);
+            if (cargo != 0 && horario != 0)
+            {
+                string claveUsuario = Clave();
+                string idEmpleado = CrearUsuario();
+                string nombres = txtNombre.Text;
+                string apellidos = txtApellido.Text;
+                string dui = txtDui.Text;
+                string nit = txtNit.Text;
+                string FechaNacimiento = txtFechaNacimiento.Text;
+                string FechaIngreso = txtFechaIngreso.Text;
+                string direccion = txtDireccion.Text;
+                string telefono = txtTelefono.Text;
+                double salario = Convert.ToDouble(txtSalario.Text);
+                int estado = 1; //Lo pongo quemado por no saber cuales son los estados :v
+                if (AgregarUsuario1.AgregarUsuario(idEmpleado, nombres, apellidos, dui, nit, FechaIngreso, claveUsuario, direccion, salario, estado, telefono, FechaNacimiento, cargo, horario))
+                {
+                    Response.Write("<script>alert('Registro Insertado Exitosamente \\nUsuario: " + idEmpleado + "\\nContraseña: " + claveUsuario + "');</script>");
+                    Response.Write("<script>location.href='AgregarUsuario.aspx';</script>");
+                }
+                else
+                {
+                    prueba.Text = "Error ingresando datos  " + FechaNacimiento + "  " + idEmpleado;
+                    prueba.ForeColor = System.Drawing.Color.DarkRed;
+                }
+            }
+            else
+            {
+                if (cargo == 0)
+                {
+                    ValidarCargo.Text = "Seleccione un Cargo de la Lista*";
+                }
+                else if (horario == 0)
+                {
+                    ValidarHorario.Text = "Seleccione un Horario de la lista*";
+                }
+                else
+                {
+                    ValidarHorario.Text = "Seleccione un Horario de la lista*";
+                    ValidarCargo.Text = "Seleccione un Cargo de la lista*";
+                }
+            }
         }
+        
+        
     }
 
     protected string Clave()
@@ -89,7 +118,7 @@ public partial class AgregarUsuario : System.Web.UI.Page
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int tipo = Convert.ToInt32(ddlTipoHorario.SelectedIndex) + 1;
+        int tipo = Convert.ToInt32(ddlTipoHorario.SelectedIndex);
         MostrarHorario(tipo);
     }
 

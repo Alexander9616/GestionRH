@@ -18,9 +18,9 @@
         <div class="contenedor-general">
            <div class="logo-interior">
                <%--PONER ICONOS ACÁ--%>
-               <img src="Recursos/Iconos/BarraNavegacion/User.png" width="40" height="40" />
+               <img src="Recursos/Iconos/BarraNavegacion/User.png" width="40" height="40" />&nbsp;
             </div>
-            <p class="texto"><asp:Label runat="server" ID="lblNombre" Text="Nombre de Usuario"></asp:Label></p>
+            <p class="titulo"><asp:Label runat="server" ID="lblNombre" Text="Nombre de Usuario"></asp:Label></p>
         </div>
         <div id="contenedor-general-primero" class="contenedor-general">
            <div class="logo-interior">
@@ -35,7 +35,8 @@
                <img src="Recursos/Iconos/BarraNavegacion/Consultar.png" width="40" height="40" />
             </div>
             <p class="Texto">
-                <asp:LinkButton ID="lbAsignarHorario" runat="server" PostBackUrl="~/Asignar_Horas.aspx">    Asignar Horario</asp:LinkButton>
+                &nbsp;&nbsp;
+                <asp:LinkButton ID="lbAsignarHorario" runat="server" PostBackUrl="~/Asignar_Horas.aspx">Asignar Horario</asp:LinkButton>
             </p>
         </div>
 
@@ -50,6 +51,16 @@
             </p>
         </div>
 
+            <div class="contenedor-general">
+           <div class="logo-interior">
+               <%--PONER ICONOS ACÁ--%>
+               <img src="Recursos/Iconos/BarraNavegacion/EditarRegistros.png" width="40" height="40" />
+            </div>
+            <p class="texto">
+                <asp:LinkButton ID="lbEditarRegistros" runat="server" PostBackUrl="~/EditarRegistros.aspx">Editar Registros</asp:LinkButton>
+            </p>
+        </div>
+
         <div class="contenedor-general">
            <div class="logo-interior">
                <%--PONER ICONOS ACÁ--%>
@@ -59,7 +70,19 @@
                 <asp:LinkButton ID="lbEditarPerfilAdmin" runat="server" PostBackUrl="~/EditarPerfilAdmin.aspx">Editar Perfil</asp:LinkButton>
             </p>
         </div>
-        <br /><br /><br /><br /><br /><br /><br />
+            <div class="contenedor-general">
+           <div class="logo-interior">
+               <%--PONER ICONOS ACÁ--%>
+               <img src="Recursos/Iconos/BarraNavegacion/delete.png" width="40" height="40" />
+            </div>
+            <p class="texto">
+                <asp:LinkButton ID="lbEliminarEmpleado" runat="server" PostBackUrl="~/EliminarEmpleado.aspx">Eliminar Empleado</asp:LinkButton>
+            </p>
+        </div>
+
+
+
+        <br />
         <div class="contenedor-general" runat="server">
            <div class="logo-interior">
                <%--PONER ICONOS ACÁ--%>
@@ -68,6 +91,7 @@
             <p class="texto"><asp:LinkButton ID="lbCerrarSesion" runat="server" PostBackUrl="~/Login.aspx" OnClick="lbCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></p>
 
         </div>
+
 
     </div>
     

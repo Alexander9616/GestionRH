@@ -11,4 +11,5 @@ public partial class Buscar_por_Nombre : System.Web.UI.Page
     {
 
     }
+    
 }

@@ -70,6 +70,7 @@ insert into EstadoEmpleados values('Activo');
 insert into EstadoEmpleados values('Receso');
 insert into EstadoEmpleados values('Permiso');
 insert into EstadoEmpleados values('Incapacidad');
+insert into EstadoEmpleados values('Desertado');
 go
 create table Empleados
 (
@@ -202,6 +203,7 @@ end
 
 --Agregar Usuario
 go
+GO
 create procedure spAgregarUsuario
 @idEmpleado char(20),
 @nombres nvarchar(50),
@@ -215,12 +217,15 @@ create procedure spAgregarUsuario
 @idEstado int,
 @telefono nchar(20),
 @FechaNacimiento date,
-@cargo int
+@cargo int,
+@idHorario int
 as
 begin
 	insert into Empleados values(@idEmpleado,@nombres,@apellidos,@dui,@nit,@FechaIngreso,@clave,@direccion,@salario,@idEstado,@telefono,@FechaNacimiento)
 	insert into EmpleadosCargo values(@idEmpleado,@cargo)
+	insert into EmpleadoHorarios values(@idEmpleado,@idHorario)
 end
+
 
 go
 --Creando tablas de Horarios
@@ -237,8 +242,8 @@ create table Horarios
 )
 select * from Horarios
 go
-Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Lunes-Viernes','12:00AM','1:30PM','8:00AM','4:00PM',1);
-Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Sabado-Domingo','12:00AM','1:30PM','7:30AM','2:15PM',1);
+Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Lunes-Viernes','12:00PM','1:30PM','8:00AM','4:00PM',1);
+Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Sabado-Domingo','12:00PM','1:30PM','7:30AM','2:15PM',1);
 Insert into Horarios(Dias,InicioReceso,FinReceseo,Entrada,Salida,Estado) values('Lunes-Sabado','11:30AM','1:00PM','7:00AM','3:30PM',1);
 go
 
@@ -367,3 +372,39 @@ END
 GO
 select * from AuditoriaPermisos
 
+--Procedimiento almacenado para editar registro
+go
+create procedure spActualizarRegistros
+@idEmpleado char(20),
+@nombres nvarchar(50),
+@apellidos nvarchar(50),
+@cargo int,
+@dui char(10),
+@nit char(17),
+@salario money
+as
+begin
+	update Empleados
+	set nombres = @nombres,
+		apellidos = @apellidos,
+		dui = @dui,
+		nit = @nit,
+		salario = @salario
+	where idEmpleado = @idEmpleado
+	
+	update EmpleadosCargo
+	set idCargo = @cargo
+	where idEmpleado = @idEmpleado
+end
+
+
+--Procedimiento almacenado para dar de baja a un empleado
+go
+create procedure spEliminarEmpleado
+@idEmpleado char(20)
+as
+begin
+	update Empleados
+	set idEstado = 5
+	where idEmpleado = @idEmpleado
+end

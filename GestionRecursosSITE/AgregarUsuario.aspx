@@ -31,10 +31,10 @@
 	            </tr>
 	            <tr>
 		            <td>Cargo</td>
-		            <td><asp:DropDownList ID="ddlCargo" runat="server" DataValueField="Cargo" DataSourceID="SqlDataSource1" DataTextField="Cargo" AppendDataBoundItems="True">
+		            <td><asp:DropDownList ID="ddlCargo" runat="server" DataValueField="Cargo" DataSourceID="Cargos" DataTextField="Cargo" AppendDataBoundItems="True">
                         <asp:ListItem Value="-1">-Cargos-</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMESConnectionString %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="Cargos" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMES-ALEXPC %>" SelectCommand="SELECT [Cargo] FROM [Cargos]"></asp:SqlDataSource>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="ValidarCargo" runat="server" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ControlToValidate="ddlCargo" ValidationGroup="Registrar"></asp:RequiredFieldValidator>
@@ -43,12 +43,12 @@
                 <tr>
                     <td>Horario</td>
                     <td>
-                        <asp:DropDownList ID="ddlTipoHorario" runat="server" AutoPostBack="True" DataSourceID="TipoHorario" DataTextField="Tipo de Horario" DataValueField="Tipo de Horario" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlTipoHorario" runat="server" AutoPostBack="True" DataSourceID="TipoHorario" DataTextField="Tipo de Horario" DataValueField="Tipo de Horario" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="True">
                             <asp:ListItem Value="-1">-Horarios-</asp:ListItem>
                         </asp:DropDownList>
                         <br />
                         <br />
-                        <asp:SqlDataSource ID="TipoHorario" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMESConnectionString %>" SelectCommand="spNumHorario" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="TipoHorario" runat="server" ConnectionString="<%$ ConnectionStrings:bdPYMES-TipoHorarios %>" SelectCommand="spNumHorario" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                         <asp:GridView ID="gvHorario" runat="server">
                         </asp:GridView>
                     </td>
