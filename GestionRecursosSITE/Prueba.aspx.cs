@@ -21,7 +21,14 @@ public partial class Prueba : System.Web.UI.Page
         //{
         //    Response.Redirect("Login.aspx");
         //}
-        string bienvenido = "¡Bienvenido , "+ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString())+"!";
-        lblBienvenido.Text = bienvenido;
+        try
+        {
+            string bienvenido = "¡Bienvenido , " + ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString()) + "!";
+            lblBienvenido.Text = bienvenido;
+        }
+        catch
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 }

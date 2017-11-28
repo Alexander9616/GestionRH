@@ -11,16 +11,13 @@ public partial class PruebaGerente : System.Web.UI.Page
     {
         try
         {
-            if (Session["User"] == null || Session["TUSuario"].ToString() != "3")
-            {
-                Response.Redirect("Login.aspx");
-            }
+            string bienvenido = "¡Bienvenido , " + ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString()) + "!";
+            lblBienvenido.Text = bienvenido;
         }
         catch
         {
             Response.Redirect("Login.aspx");
         }
-        string bienvenido = "¡Bienvenido , " + ValidarUsuarioRegistrado.MuestraNombre(Session["User"].ToString()) + "!";
-        lblBienvenido.Text = bienvenido;
+       
     }
 }

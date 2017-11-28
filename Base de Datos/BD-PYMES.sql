@@ -419,16 +419,9 @@ create procedure stpActivarPermiso
 @fecha varchar(10)
 as
 begin
-	declare @diaI date
-	set @diaI=(select diaInicio from Permisos where idEstado=2);
-	declare @diaF date
-	set @diaF=(select diFinal from Permisos where idEstado=2);
-	update Empleados set idEstado = 3 where @fecha>=@diaI and @diaF<@fecha;
-	update Empleados set idEstado = 1 where @diaF>@diaF;
+	update Empleados set idEstado = 3 where idEstado<>3 and idEstado <>5 and  @fecha between (select diaInicio from Permisos) and (select diFinal from Permisos);
+	update Empleados set idEstado = 1 where idEstado <> 5 and @fecha >(select diFinal from Permisos);
 end
 go
 
-
-select * from EstadoEmpleados
-select * from Cargos
-
+select * from Permisos

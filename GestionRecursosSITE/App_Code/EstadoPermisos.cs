@@ -67,6 +67,7 @@ public class EstadoPermisos
         cmd.CommandType = CommandType.StoredProcedure;
         cmd.CommandText = consulta;
         cmd.Parameters.AddWithValue("@fecha", fecha);
+        
         try
         {
             conexion.conectar();
