@@ -415,13 +415,18 @@ begin
 	update Permisos set idEstado=4 where diaInicio < @fecha and idEstado=1;
 end
 go
-create procedure stpActivarPermiso
+alter procedure stpActivarPermiso
 @fecha varchar(10)
 as
 begin
-	update Empleados set idEstado = 3 where idEstado<>3 and idEstado <>5 and  @fecha between (select diaInicio from Permisos) and (select diFinal from Permisos);
-	update Empleados set idEstado = 1 where idEstado <> 5 and @fecha >(select diFinal from Permisos);
+	update Empleados set idEstado = 3 where idEstado<>3 and idEstado <>5
+	 and  @fecha between (select diaInicio from Permisos inner join Empleados on Permisos.idEmpleado=Empleados.idEmpleado) 
+	 and (select diFinal from Permisos inner join Empleados on Permisos.idEmpleado=Empleados.idEmpleado);
+	--update Empleados set idEstado = 1 where idEstado <> 5 and @fecha >(select diFinal from Permisos);
 end
 go
 
-select * from Permisos
+select * from Empleados
+exec stpActivarPermiso '2017/11/27'
+select * from Empleados
+select * from EstadoPermiso

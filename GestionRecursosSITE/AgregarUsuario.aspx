@@ -61,6 +61,7 @@
 	            <tr>
 		            <td>DUI</td>
 		            <td><asp:TextBox ID="txtDui" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtDui" ErrorMessage="*Ingrese un DUI valido" ValidationExpression="\d{8}[-]?\d{1}" ValidationGroup="Registrar"></asp:RegularExpressionValidator>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="ValidarDui" runat="server" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ControlToValidate="txtDui" ValidationGroup="Registrar"></asp:RequiredFieldValidator>
@@ -69,6 +70,7 @@
 	            <tr>
 		            <td>NIT</td>
 		            <td><asp:TextBox ID="txtNit" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtNit" ErrorMessage="*Ingrese un NIT valido" ValidationExpression="^\d{4}[-]?\d{6}[-]?\d{3}[-]?\d{1}$" ValidationGroup="Registrar"></asp:RegularExpressionValidator>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="ValidarNit" runat="server" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ControlToValidate="txtNit" ValidationGroup="Registrar"></asp:RequiredFieldValidator>
@@ -102,6 +104,7 @@
 	            <tr>
 		            <td>Teléfono</td>
 		            <td><asp:TextBox ID="txtTelefono" runat="server" TextMode="Phone"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="*Ingrese un Telefono valido" ValidationExpression="\d{4}[-]?\d{4}" ValidationGroup="Registrar" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="ValidarTelefono" runat="server" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ControlToValidate="txtTelefono" ValidationGroup="Registrar"></asp:RequiredFieldValidator>

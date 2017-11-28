@@ -20,19 +20,21 @@
                     <tr>
                         <td>Direccion:</td>
                         <td><asp:TextBox ID="txtDireccion" runat="server" TextMode="MultiLine" OnTextChanged="txtDireccion_TextChanged" /></td>
-                        <td runat="server" id="direcciontd"></td>
+                        <td runat="server" id="direcciontd">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDireccion" ErrorMessage="*Valor requerido" ValidationGroup="actualizar"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td>Teléfono</td>
                         <td><asp:TextBox ID="txtTelefono" runat="server" OnTextChanged="txtTelefono_TextChanged" /></td>
                         <td runat="server" id="telefonotd">
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Digite valores correctos" ValidationExpression="([+]?([5][0][3]){1})|([267]{1}[0-9]{3}[ -]?[0-9]{4})"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Digite valores correctos" ValidationExpression="\d{4}[-]?\d{4}" ValidationGroup="actualizar"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <center>
-                                <asp:Button runat="server" Text="Actualizar" ID="btnActualizar" CssClass="boton" OnClick="btnActualizar_Click1"  />
+                                <asp:Button runat="server" Text="Actualizar" ID="btnActualizar" CssClass="boton" OnClick="btnActualizar_Click1" ValidationGroup="actualizar"  />
                             </center>
                         </td>
                     </tr>
