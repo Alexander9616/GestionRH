@@ -425,8 +425,14 @@ begin
 	--update Empleados set idEstado = 1 where idEstado <> 5 and @fecha >(select diFinal from Permisos);
 end
 go
-
+select * from Permisos
 select * from Empleados
+
+
+
+
+
+
 exec stpActivarPermiso '2017/11/27'
 select * from Empleados
 select * from EstadoPermiso

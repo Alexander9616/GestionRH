@@ -32,7 +32,7 @@
         </asp:DetailsView>
     </div>
     <div style="margin: 0 auto; width:30%; float:right;">
-        <asp:Button runat="server" ID="btnOK" Text="OK" OnClick="btnOK_Click"/>
+        <asp:Button runat="server" ID="btnOK" Text="OK" OnClick="btnOK_Click" style="height: 42px"/>
     </div>
 </asp:Content>
 

@@ -9,8 +9,15 @@ public partial class MiPermisoAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        grvPermiso.DataSource = EstadoPermisos.consultarEstado(Session["User"].ToString());
-        grvPermiso.DataBind();
+        try
+        {
+            grvPermiso.DataSource = EstadoPermisos.consultarEstado(Session["User"].ToString());
+            grvPermiso.DataBind();
+        }
+        catch
+        {
+            Response.Redirect("Login.aspx");
+        }
         if (grvPermiso.Rows.Count == 0)
         {
             lblMensaje.Text = "Usted no posee Permisos Solicitados!";
